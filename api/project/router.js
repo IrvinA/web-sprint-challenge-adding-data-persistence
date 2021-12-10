@@ -1,6 +1,6 @@
 const express = require('express');
 const Projects = require('./model');
-const { checkPost, validatePost } = require('./middleware');
+const { validatePost } = require('./middleware');
 
 const router = express.Router();
 
@@ -12,7 +12,7 @@ router.get('/', (req, res, next) => {
     .catch(next);
 });
 
-router.post('/', checkPost, validatePost, (req, res, next) => {
+router.post('/', validatePost, (req, res, next) => {
   const project = req.body;
 
   Projects.addProject(project)
