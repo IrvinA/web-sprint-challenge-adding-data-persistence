@@ -13,7 +13,9 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', checkPost, validatePost, (req, res, next) => {
-  Projects.addProject(req.body)
+  const project = req.body;
+
+  Projects.addProject(project)
     .then((project) => {
       res.status(201).json(project);
     })
